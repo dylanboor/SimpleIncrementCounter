@@ -1,0 +1,1 @@
+This webpage demonstrates a simple javascript tool to calculate incremental values for a game based on the limitation that a single value should not exceed 252.

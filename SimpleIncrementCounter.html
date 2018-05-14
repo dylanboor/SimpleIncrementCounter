@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html onkeydown="return allowPlusKey(event)">
+<head>
+	<title>SimpleIncrementCounter</title>
+</head>
+<body onload="showTime()">
+	<h1 id="title">
+		Counter Name:
+		<input id="titleInput" type="text" size="15" maxlength="20" onkeydown="return allowEnterKey(event)" 
+			title="Input a name for your Counter." />
+		<button id="titleSubmitButton" onclick="setCustomTitle()" title="Click to submit your Counter name. You can also press [Enter] while typing."> Enter </button>
+		<br>
+	</h1>
+	
+	<!-- Input Table -->
+	<table border="0" width="200">
+		<tr>
+			<td>
+			</td>
+			<td valign="top" title="This column shows the number your Counter is starting with.">
+				Initial
+			</td>
+			<td valign="top" title="This column shows the number your Counter will get for every incrementation.">
+				Modifier
+			</td>
+			<td valign="top" title="This column shows the total your Counter has currently.">
+				Result
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<input type="text" size="7" value="val1 number:" disabled="disabled" />
+				<br>
+				<input type="text" size="7" value="val2 number:" disabled="disabled" />
+				<br>
+				<input type="text" size="7" value="val3 number:" disabled="disabled" />
+				<br>
+				<input type="text" size="7" value="val4 number:" disabled="disabled" />
+				<br>
+				<input type="text" size="7" value="val5 number:" disabled="disabled" />
+				<br>
+				<input type="text" size="7" value="val6 number:" disabled="disabled" />
+				<br>
+				<input type="text" size="7" value="Sum:" disabled="disabled" />
+			</td>
+			<td valign="top">
+				<input type="text" id="val1Initial" size="2" maxlength="3" value="0" onkeydown="return allowOnlyInts(event)" onfocus="this.select()" onMouseUp="return false" 
+					title="Input the number of val1 your Counter currently has." />
+				<br>
+				<input type="text" id="val2Initial" size="2" maxlength="3" value="0" onkeydown="return allowOnlyInts(event)" onfocus="this.select()" onMouseUp="return false" 
+					title="Input the number of val2 your Counter currently has." />
+				<br>
+				<input type="text" id="val3Initial" size="2" maxlength="3" value="0" onkeydown="return allowOnlyInts(event)" onfocus="this.select()" onMouseUp="return false" 
+					title="Input the number of val3 your Counter currently has." />
+				<br>
+				<input type="text" id="val4Initial" size="2" maxlength="3" value="0" onkeydown="return allowOnlyInts(event)" onfocus="this.select()" onMouseUp="return false" 
+					title="Input the number of val4 your Counter currently has." />
+				<br>
+				<input type="text" id="val5Initial" size="2" maxlength="3" value="0" onkeydown="return allowOnlyInts(event)" onfocus="this.select()" onMouseUp="return false" 
+					title="Input the number of val5 your Counter currently has." />
+				<br>
+				<input type="text" id="val6Initial" size="2" maxlength="3" value="0" onkeydown="return allowOnlyInts(event)" onfocus="this.select()" onMouseUp="return false" 
+					title="Input the number of val6 your Counter currently has." />
+				<br>
+				<input type="text" id="sum_init" size="2" maxlength="3" value="0" disabled="disabled" 
+					title="This box shows the starting sum your Counter has. (max 510)" />
+			</td>
+			<td valign="top">
+				<input type="text" id="val1Modifier" size="2" maxlength="2" value="0" onkeydown="return allowOnlyInts(event)" onfocus="this.select()" onMouseUp="return false"
+					title="Input the number your value will receive when it is incremented." />
+				<br>
+				<input type="text" id="val2Modifier" size="2" maxlength="2" value="0" onkeydown="return allowOnlyInts(event)" onfocus="this.select()" onMouseUp="return false"
+					title="Input the number your value will receive when it is incremented." />
+				<br>
+				<input type="text" id="val3Modifier" size="2" maxlength="2" value="0" onkeydown="return allowOnlyInts(event)" onfocus="this.select()" onMouseUp="return false"
+					title="Input the number your value will receive when it is incremented." />
+				<br>
+				<input type="text" id="val4Modifier" size="2" maxlength="2" value="0" onkeydown="return allowOnlyInts(event)" onfocus="this.select()" onMouseUp="return false"
+					title="Input the number your value will receive when it is incremented." />
+				<br>
+				<input type="text" id="val5Modifier" size="2" maxlength="2" value="0" onkeydown="return allowOnlyInts(event)" onfocus="this.select()" onMouseUp="return false"
+					title="Input the number your value will receive when it is incremented." />
+				<br>
+				<input type="text" id="val6Modifier" size="2" maxlength="2" value="0" onkeydown="return allowOnlyInts(event)" onfocus="this.select()" onMouseUp="return false"
+					title="Input the number your value will receive when it is incremented." />
+			</td>
+			<td valign="top">
+				<input type="text" id="val1Result" size="2" maxlength="3" value="0" disabled="disabled"
+					title="This box shows the current number your Counter has." />
+				<br>
+				<input type="text" id="val2Result" size="2" maxlength="3" value="0" disabled="disabled"
+					title="This box shows the current number your Counter has." />
+				<br>
+				<input type="text" id="val3Result" size="2" maxlength="3" value="0" disabled="disabled"
+					title="This box shows the current number your Counter has." />
+				<br>
+				<input type="text" id="val4Result" size="2" maxlength="3" value="0" disabled="disabled"
+					title="This box shows the current number your Counter has." />
+				<br>
+				<input type="text" id="val5Result" size="2" maxlength="3" value="0" disabled="disabled"
+					title="This box shows the current number your Counter has." />
+				<br>
+				<input type="text" id="val6Result" size="2" maxlength="3" value="0" disabled="disabled"
+					title="This box shows the current number your Counter has." />
+				<br>
+				<input type="text" id="sum_result" size="2" maxlength="3" value="0" disabled="disabled"
+					title="This box shows the current sum your Counter has. (max 510)" />
+			</td>
+		</tr>
+	</table>
+	
+	<table border="0" width="300">
+		<tr>
+			<td>
+			<!-- Submit Button -->
+				<button id="submit_button" onclick="submitButton()"
+					title="This button submits your input values and locks them until you press Reset. You can also press [Enter] when inputting values to submit.">
+					Submit
+				</button>
+			</td>
+			<td>
+			<!-- Counter -->
+				&emsp; Counter
+				<input id="counter" type="text" size="1" maxlength="4" value="0" disabled="disabled" 
+					title="This box shows the number of Counter you have fainted." />
+				<button id="plus_button" onclick="incrementCounter()" disabled="disabled"
+					title="Press this button when you increment to gain the number in the Modifier table. You can also press [+] on numPad or [=] on the keyboard.">
+					&nbsp;+&nbsp;
+				</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<!-- Unlock Button -->
+				<button id="unlockButton" onclick="unlockButton()"
+					title="This button sets the counter to 0 and unlocks the input values. Press this when you need to change your modifier values.">
+					Unlock
+				</button>
+			</td>
+			<td>
+			<!-- Reset Button -->
+				&emsp;&emsp;&emsp;&emsp;&emsp;
+				<button id="resetButton" onclick="location.reload()"
+					title="This button refreshes the page and resets the program. Use when F5 or Refresh doesn't work.">
+					<font color="red">
+						Reset
+					</font>
+				</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<!-- Clock -->
+				<div id="timeParagraph">
+				</div>
+			</td>
+			<td>
+			<!-- Last Updated -->
+				<div id="lastUpdated">
+				</div>
+			</td>
+		</tr>
+	</table>
+
+	This tool is used to calculate incremental values for a game based on the limitation that a single value should not exceed 252.<br>
+<!-- Help -->
+	<p id="helpParagraph">
+		<button id="helpButton" onclick="helpButton()" title="Click this button if you need help."> ? </button>
+	</p>
+	
+	
+	
+		
+	<script>
+		var initSum = 0;
+		var resultSum = 0;
+		
+		var date = new Date();
+
+		var initials = new Array();
+		var modifiers = new Array();
+		var results = new Array();
+		
+		initials[0] = document.getElementById("val1Initial");
+		initials[1] = document.getElementById("val2Initial");
+		initials[2] = document.getElementById("val3Initial");
+		initials[3] = document.getElementById("val4Initial");
+		initials[4] = document.getElementById("val5Initial");
+		initials[5] = document.getElementById("val6Initial");
+		modifiers[0] = document.getElementById("val1Modifier");
+		modifiers[1] = document.getElementById("val2Modifier");
+		modifiers[2] = document.getElementById("val3Modifier");
+		modifiers[3] = document.getElementById("val4Modifier");
+		modifiers[4] = document.getElementById("val5Modifier");
+		modifiers[5] = document.getElementById("val6Modifier");
+		results[0] = document.getElementById("val1Result");
+		results[1] = document.getElementById("val2Result");
+		results[2] = document.getElementById("val3Result");
+		results[3] = document.getElementById("val4Result");
+		results[4] = document.getElementById("val5Result");
+		results[5] = document.getElementById("val6Result");
+
+		function setCustomTitle()
+		{
+			if (document.getElementById("titleInput").value != "")
+			{
+				document.getElementById("title").innerHTML = document.getElementById("titleInput").value;
+			}
+		}
+		
+		function submitButton()
+		{
+			initSum = 0;
+			resultSum = 0;
+			document.getElementById("submit_button").disabled = true;
+			document.getElementById("plus_button").disabled = false;
+			for (var i = 0; i < initials.length; i++)
+			{
+				if (initials[i].value == "")
+				{
+					initials[i].value = 0;
+				}
+				if (modifiers[i].value == "")
+				{
+					modifiers[i].value = 0;
+				}
+				initials[i].value = parseInt(initials[i].value);
+				modifiers[i].value = parseInt(modifiers[i].value);
+				results[i].value = initials[i].value;
+				initials[i].disabled = true;
+				modifiers[i].disabled = true;
+				initSum += parseInt(initials[i].value);
+			}
+			document.getElementById("sum_init").value = initSum;
+			resultSum = initSum;
+			document.getElementById("sum_result").value = resultSum;
+			checkBoundaries();
+		}
+		
+		function unlockButton()
+		{
+			document.getElementById("counter").value = 0;
+			document.getElementById("submit_button").disabled = false;
+			document.getElementById("plus_button").disabled = true;
+			initSum = 0;
+			resultSum = 0;
+			for (var i = 0; i < initials.length; i++)
+			{
+				initials[i].value = results[i].value;
+				modifiers[i].value = 0;
+				results[i].value = 0;
+				initials[i].disabled = false;
+				modifiers[i].disabled = false;
+				initSum += parseInt(initials[i].value);
+			}
+			document.getElementById("sum_init").value = initSum;
+			document.getElementById("sum_result").value = resultSum;
+			
+		}
+		
+		function helpButton()
+		{
+			var string = "HELP DISPLAY:<br>" + 
+				"<font color='red'>Hover your mouse over any button or input box to see more information. (This includes convenient keybindings!)</font><br><br>" +
+				"Input your starting number, then modifier amount for each increment, then hit Submit.<br>" +
+				"Clicking Submit locks your input values. Increment the counter by hitting the + for each incrementation.<br>" +
+				"Reset will update your starting number and set the counter back to 0, allowing you to edit values.<br><br>" +
+				"You will need to refresh your page and enter another name if you want to start over.";
+			document.getElementById("helpParagraph").innerHTML = string;
+		}
+		
+		function incrementCounter()
+		{
+			if (document.getElementById("submit_button").disabled == true)
+			{
+				document.getElementById("counter").value++;
+				
+				for (i = 0; i < modifiers.length; i++)
+				{
+					if (modifiers[i].value != "0")
+					{
+						results[i].value = parseInt(results[i].value) + parseInt(modifiers[i].value);
+						resultSum += parseInt(modifiers[i].value);
+					}
+				}
+				checkBoundaries();
+				document.getElementById("sum_result").value = resultSum;
+				timeLastUpdated();
+			}
+		}
+		
+		function checkBoundaries()
+		{
+			var caution = false;
+			for (i = 0; i < modifiers.length; i++)
+			{
+				var initial = initials[i].value;
+				var modifier = modifiers[i].value;
+				var result = results[i].value;
+				
+				if (modifier != 0)
+				{
+					if (result == 252)
+					{
+						alert("Congratulations, a value has reached 252.");
+					}
+					else if (result > 252)
+					{
+						alert("Failure, a value has exceeded 252.");
+					}
+					else if (modifier > (252 - result))
+					{
+						caution = true;
+					}
+				}
+				
+			}
+			if (caution)
+			{
+				alert("Warning: a counter will exceed 252 on next increment!");
+			}
+		}
+		
+		var now = new Date();
+		function showTime()
+		{
+			now = new Date();
+			var hours = now.getHours();
+			var mins = timeStringHelper(now.getMinutes());
+			var secs = timeStringHelper(now.getSeconds());
+			
+			document.getElementById("timeParagraph").innerHTML = hours + ":" + mins + ":" + secs;
+			t=setTimeout(function(){showTime()},500);
+		}
+		
+		function timeStringHelper(time)
+		{
+			if (time < 10)
+			{
+				time = "0" + time;
+			}
+			return time;
+		}
+		
+		var hrs;
+		var mins;
+		var secs;
+		var msec;
+		function timeLastUpdated()
+		{
+			date = new Date();
+			hrs = date.getHours();
+			mins = timeStringHelper(date.getMinutes());
+			secs = timeStringHelper(date.getSeconds());
+			msec = date.getMilliseconds();
+			
+			document.getElementById("lastUpdated").innerHTML = "Last change: " + hrs + ":" + mins + ":" + secs + "." + msec;
+		}
+		
+		///////v key functions/////
+		function allowOnlyInts(event)
+		{
+			var keyCode = ('which' in event) ? event.which : event.keyCode;
+			
+			var isNumber = (keyCode >= 48 && keyCode <= 57) ||
+				(keyCode >= 96 && keyCode <= 105);
+			var modifiers = (event.altKey || event.ctrlKey || event.shiftKey);
+			var backspace = (keyCode == 8 || keyCode == 46);
+			var tab = (keyCode == 9);
+			
+			var enter = (keyCode == 13);
+			
+			if (enter)
+			{
+				submitButton();
+			}
+			
+			return isNumber || backspace || modifiers || tab;
+		}
+		
+		function allowEnterKey(event)
+		{
+			var keyCode = ('which' in event) ? event.which : event.keyCode;
+			
+			var enter = (keyCode == 13);
+			
+			if (enter && (document.getElementById("titleInput").value != ""))
+			{
+				setCustomTitle();
+			}
+			return !enter;
+		}
+		
+		function allowPlusKey(event)
+		{
+			var keyCode = ('which' in event) ? event.which : event.keyCode;
+			var plus = (keyCode == 107);
+			var tilde = (keyCode == 192);
+			
+			if (plus || tilde)
+			{
+				incrementCounter();
+			}
+			return (!plus && !tilde);
+		}
+///////^keys//////////
+		
+		
+	</script>
+
+</body>
+</html>
